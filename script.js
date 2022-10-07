@@ -32,15 +32,23 @@ const fetchData = async (url) => {
         const newHeader = document.createElement('h1')
         const newDiv = document.createElement('div')
         const newImg = document.createElement('img')
+        const newAnchor = document.createElement('a')
+        const newSpan = document.createElement('span')
 
         document.querySelector('body').appendChild(newSection)
-        newSection.appendChild(newHeader)
+        newSection.appendChild(newAnchor)
+        newAnchor.appendChild(newHeader)
+        newSection.appendChild(newSpan)
         newSection.appendChild(newDiv)
         newDiv.appendChild(newImg)
+    
 
         newSection.classList.add('result-wrap')
         newDiv.classList.add('image-wrap')
+        newAnchor.href = result.sourceUrl
         newHeader.innerText = result.title
+        newSpan.innerText = `Ready In: ${result.readyInMinutes} Minutes`
+        newSpan.classList.add('readyInMinutes')
         newImg.src = ` https://spoonacular.com/recipeImages/${result.image}`
         // newDiv.style.backgroundImage = `url(https://spoonacular.com/recipeImages/${result.image})`
     })
